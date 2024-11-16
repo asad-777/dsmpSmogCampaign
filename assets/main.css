@@ -118,6 +118,19 @@ nav .space_a1 {
     background-color: rgba(200, 200, 200);
   }
 }
+.end {
+  width: 100vw;
+  height: 40vh;
+  background-color: rgb(50, 50, 50);
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  font-size: 1em;
+  font-weight: 700;
+  text-align: center;
+}
 @media screen and (min-width: 500px) {
   .asad {
     width: 70%;
@@ -145,4 +158,17 @@ nav .space_a1 {
     width: 80vw;
     text-align: center;
   }
+}
+.fa-brands {
+  font-size: 2em;
+  transition-duration: 0.1s;
+  padding: 1vw;
+
+  &:hover {
+    background-color: rgba(200, 200, 200, 0.5);
+    border-radius: 20px;
+  }
+}
+table {
+  border-spacing: 0 3vw;
 }
