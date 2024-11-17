@@ -3,63 +3,235 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dsmp Smog Competition</title>
-    <link rel="stylesheet" href="assets/main.css" />
-    <link rel="icon" href="assets/logo.jpg" />
-    <script src="assets/main.js"></script>
+    <title>DSMP Smog Awareness Competition</title>
     <link
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
       rel="stylesheet"
     />
-    <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        const contents = document.querySelectorAll(".content");
+    <link rel="icon" href="assets/logo.jpg" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      }
 
-        const observer = new IntersectionObserver(
-          (entries) => {
-            entries.forEach((entry) => {
-              if (entry.isIntersecting) {
-                entry.target.classList.add("show");
-                // Optionally, unobserve the element to improve performance
-                observer.unobserve(entry.target);
-              }
-            });
-          },
-          {
-            threshold: 0.1, // Trigger when 10% of the element is visible
-          }
+      body {
+        line-height: 1.6;
+        color: #333;
+        overflow-x: hidden;
+      }
+
+      /* Navigation */
+      nav {
+        background: linear-gradient(
+          to right,
+          rgba(27, 26, 84, 0.95),
+          rgba(96, 12, 1, 0.95)
         );
+        padding: 1rem;
+        width: 100%;
+        z-index: 1000;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
 
-        contents.forEach((content) => observer.observe(content));
-      });
-    </script>
+      .nav-content {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .logo {
+        width: 60px;
+        height: 60px;
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+
+      .nav-title {
+        color: white;
+        font-size: 1.5rem;
+        font-weight: bold;
+        text-align: center;
+        flex-grow: 1;
+      }
+
+      /* Hero Section */
+      .hero {
+        height: 100vh;
+        background: url(assets/banner.jpg);
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: white;
+        padding: 2rem;
+      }
+
+      .hero-content {
+        max-width: 800px;
+      }
+
+      .hero h1 {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+      }
+
+      /* Content Sections */
+      .section {
+        padding: 5rem 2rem;
+        opacity: 0;
+        transform: translateY(30px);
+        transition: all 0.6s ease-out;
+      }
+
+      .section.show {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      .section-content {
+        max-width: 1000px;
+        margin: 0 auto;
+      }
+
+      .section:nth-child(odd) {
+        background-color: #f8f9fa;
+      }
+
+      .section h2 {
+        color: #1b1a54;
+        font-size: 2.5rem;
+        margin-bottom: 2rem;
+        text-align: center;
+      }
+
+      /* Cards */
+      .cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        margin-top: 3rem;
+      }
+
+      .card {
+        background: white;
+        padding: 2rem;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+      }
+
+      .card:hover {
+        transform: translateY(-5px);
+      }
+
+      /* Timeline */
+      .timeline {
+        margin: 3rem auto;
+        max-width: 800px;
+      }
+
+      .timeline-item {
+        padding: 2rem;
+        border-left: 3px solid #1b1a54;
+        margin-left: 2rem;
+        position: relative;
+      }
+
+      .timeline-item::before {
+        content: "";
+        position: absolute;
+        left: -10px;
+        top: 50%;
+        width: 20px;
+        height: 20px;
+        background: #1b1a54;
+        border-radius: 50%;
+      }
+
+      /* Register Button */
+      .register-btn {
+        display: inline-block;
+        padding: 1rem 3rem;
+        background: #600c01;
+        color: white;
+        text-decoration: none;
+        border-radius: 30px;
+        font-weight: bold;
+        transition: all 0.3s ease;
+        margin-top: 2rem;
+      }
+
+      .register-btn:hover {
+        background: #7d1001;
+        transform: scale(1.05);
+      }
+
+      /* Footer */
+      footer {
+        background: #1b1a54;
+        color: white;
+        padding: 3rem 2rem;
+        text-align: center;
+      }
+
+      .social-links {
+        margin-top: 2rem;
+      }
+
+      .social-links a {
+        color: white;
+        font-size: 1.5rem;
+        margin: 0 1rem;
+        transition: color 0.3s ease;
+      }
+
+      .social-links a:hover {
+        color: #c3a96f;
+      }
+
+      @media (max-width: 768px) {
+        .hero h1 {
+          font-size: 2rem;
+        }
+
+        .section {
+          padding: 3rem 1rem;
+        }
+
+        .section h2 {
+          font-size: 2rem;
+        }
+      }
+    </style>
   </head>
   <body>
-    <!-- Navigation Bar -->
     <nav>
-      <div class="logo_a1"></div>
-      <div class="space_a1">Breathe Life, Not Smog</div>
-      <div class="logo_a2"></div>
+      <div class="nav-content">
+        <div class="logo"></div>
+        <div class="nav-title">The Air We Breathe, The Future We Shape</div>
+        <div class="logo"></div>
+      </div>
     </nav>
 
-    <!-- Banner Section -->
-    <div class="banner">
-      <img src="assets/banner.jpg" alt="smog banner image" />
+    <div class="hero">
+      <div class="hero-content">
+        <h1>DSMP Smog Awareness Competition</h1>
+        <p>Join us in the fight for cleaner air and a healthier future</p>
+        <a href="#register" class="register-btn">Join the Movement</a>
+      </div>
     </div>
 
-    <!-- Smog Information Section (Blank sections) -->
-    <div class="information register">
-      <a
-        href="https://forms.gle/tVG96ziGmsnRWw8s7"
-        target="_blank"
-        class="register_btn"
-        >Register Here</a
-      >
-    </div>
-    <div class="information_blank content">
-      <div class="asad">
-        <h2>What is Smog?</h2>
-        <br />
+    <section class="section" id="about-smog">
+      <div class="section-content">
+        <h2>Understanding Smog</h2>
         <p>
           Smog is a dangerous blend of smoke and fog that can have a devastating
           effect on our health. It not only impairs air quality but also leads
@@ -70,174 +242,190 @@
           determining our health," yet smog continues to compromise that very
           necessity.
         </p>
+
+        
+    </section>
+
+    <section class="section" id="about-dsmp">
+      <div class="section-content">
+        <h2>About DSMP</h2>
+        <p>
+          The Doctor Samar Mubarakmand Society for Physics (DSMP) at GC
+          University is dedicated to promoting scientific awareness and
+          environmental responsibility. Through this competition, we aim to
+          engage young minds in finding solutions to our city's pressing
+          environmental challenges.
+        </p>
       </div>
-      <img src="assets/gcu_logo.png" />
-    </div>
+    </section>
 
-    <!-- Event Introduction Section -->
-    <div class="information section_1 content">
-      <h2>The DSMP Smog Awareness Competition</h2>
-      <br />
-      <p>
-        The DSMP Smog Awareness Competition is more than just a contest—it’s a
-        movement. A movement to raise awareness, a movement to spark change, and
-        a movement to protect the very air we breathe. This competition aims to
-        give individuals from all walks of life—students, professionals, and
-        everyday citizens—the opportunity to contribute towards solving one of
-        the most urgent environmental issues of our time: the smog crisis.
-      </p>
-      <p>
-        By participating, you’ll be joining a prestigious community of
-        problem-solvers committed to improving air quality. The DSMP (Doctor
-        Samar Mubarakmand Society for Physics) is a leading force in innovation
-        and education, and your involvement in this event will help shape the
-        future of environmental change. "Together, we have the power to fight
-        pollution. Together, we can breathe life into a cleaner, healthier
-        world."
-      </p>
-    </div>
-
-    <!-- What You Can Submit Section -->
-    <div class="information_blank content section_1a">
-      <div class="asad">
-        <h2>What You Can Submit</h2>
+    <section class="section" id="lahore-crisis">
+      <div class="section-content">
+        <h2>The DSMP Smog Awareness Competition</h2>
         <br />
         <p>
-          Your submission can take many forms—get creative and choose the medium
-          that best expresses your thoughts and ideas on the smog crisis. We
-          welcome all kinds of submissions including:
+          The DSMP Smog Awareness Competition is more than just a contest—it’s a
+          movement. A movement to raise awareness, a movement to spark change,
+          and a movement to protect the very air we breathe. This competition
+          aims to give individuals from all walks of life—students,
+          professionals, and everyday citizens—the opportunity to contribute
+          towards solving one of the most urgent environmental issues of our
+          time: the smog crisis.
         </p>
-        <ul>
-          <li>
-            <strong>Blog Posts</strong>: Share your thoughts on smog, its impact
-            on health, and your ideas for reducing pollution. A well-researched
-            blog post can help spread the message far and wide.
-          </li>
-          <li>
-            <strong>Projects or Solutions</strong>: If you're passionate about
-            tackling the smog problem, submit a project that outlines practical
-            solutions or creative methods for combating air pollution.
-          </li>
-          <li>
-            <strong>Infographics and Visuals</strong>: Use graphics and visual
-            storytelling to communicate the dangers of smog. People remember
-            what they see, so make it impactful!. It's up to you to submit an
-            Art Work, A presentation or your research work thesis.
-          </li>
-          <li>
-            <strong>Videos</strong>: Create a short video explaining the effects
-            of smog or showcasing innovative solutions. Video is one of the most
-            engaging ways to communicate ideas effectively.
-          </li>
-        </ul>
         <p>
-          Details about submissions will be provided in Whatsapp group, your
-          submission will help raise awareness about the severity of the smog
-          issue. "The world needs innovators who are not afraid to act and make
-          a difference."
+          By participating, you’ll be joining a prestigious community of
+          problem-solvers committed to improving air quality. The DSMP (Doctor
+          Samar Mubarakmand Society for Physics) is a leading force in
+          innovation and education, and your involvement in this event will help
+          shape the future of environmental change. "Together, we have the power
+          to fight pollution. Together, we can breathe life into a cleaner,
+          healthier world."
         </p>
       </div>
-      <img src="assets/gcu_logo.png" />
-    </div>
-
-    <!-- How to Participate Section -->
-    <div class="information section_2 content">
-      <h2>How to Participate</h2>
-      <br />
-      <p>
-        It’s easy to get involved, and there are endless possibilities to
-        showcase your creativity and knowledge about the smog crisis. Whether
-        you’re a budding writer, a tech enthusiast, or a visionary artist, we
-        want to see how you can make a difference. Here’s how you can
-        contribute:
-      </p>
-      <ul>
-        <li>
-          Create a blog post, project, infographic, a topic related piece of Art
-          work, or even a short video that educates and raises awareness about
-          smog and its impact. Get creative with your approach!
-        </li>
-        <li>
-          Submit your project to us via the registration form below. Tell us
-          your story, your research, and how your work can help the community
-          understand the harmful effects of smog.The DeadLine for Submission is
-          1st December, we will start receiving submissions after 25 November.
-        </li>
-        <li>
-          Exciting rewards await! The top 3 submissions will be honored with
-          certificates of excellence, and every participant will receive a
-          certificate of appreciation for their contribution to this important
-          cause.
-        </li>
-      </ul>
-      <p>
-        Remember, this is not just about winning—it’s about making a real
-        impact. "The future belongs to those who take action today."
-      </p>
-    </div>
-
-    <!-- Smog Information Section (Blank sections) -->
-    <div class="information_blank content">
-      <div class="asad">
-        <h2>Preventing Smog: What You Can Do</h2>
-        <br />
+      <br>
+      <h2>Submission Examples</h2>
+      <div class="cards">
+                <div class="card">
+        <h3>Essays</h3>
         <p>
-          We all have a role to play in reducing smog. Simple actions like
-          walking, cycling, or using public transport can make a huge
-          difference. You can also support initiatives for renewable energy,
-          reduce your carbon footprint, and get involved in local campaigns to
-          plant trees and clean up the environment. "It is not the
-          responsibility of one, but of all, to ensure our air remains clean for
-          future generations."
+          Write compelling essays (1000-2000 words) or blogs/articles focusing
+          on topics such as:<br />
+          • Historical events like the Great Smog of London (1952)<br />
+          • The impact of smog on global health<br />
+          • Policy analysis or recommendations for reducing air pollution
         </p>
       </div>
-      <img src="assets/gcu_logo.png" />
-    </div>
 
-    <!-- Registration Section -->
-    <div class="information section_3 content">
-      <h2>Register for the Competition</h2>
-      <br />
-      <p>
-        Don’t wait! The time to act is now. By registering for the DSMP Smog
-        Awareness Competition, you’re not just participating in an event—you’re
-        becoming a catalyst for change. Your voice can make a real difference,
-        and we’re excited to see what you create.
-      </p>
-      <p>
-        To join, simply click the button below, fill out the registration form,
-        and submit your project. It’s that easy! Together, we can create a
-        powerful wave of awareness and change that will reach far beyond this
-        competition.
-      </p>
-      <a
-        href="https://forms.gle/tVG96ziGmsnRWw8s7"
-        target="_blank"
-        class="register_btn"
-        >Register Now and Make an Impact</a
-      >
-    </div>
-    <div class="end">
-      <table>
-        <tr>
-          <td>Powered By DSMP ( GCU )</td>
-        </tr>
-        <tr>
-          <td>Organized By Muhammad Asad Amir</td>
-        </tr>
-        <tr>
-          <td>
-            <a href="https://github.com/asad-777" style="color: white">
-              <i class="fa-brands fa-github"></i></a
-            >&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
-            <a
-              href="https://www.linkedin.com/in/muhammad-asad-amir-a27541320/"
-              style="color: white"
-              ><i class="fa-brands fa-linkedin"></i
-            ></a>
-          </td>
-        </tr>
-      </table>
-    </div>
+      <!-- Artwork Card -->
+      <div class="card">
+        <h3>Artwork</h3>
+        <p>
+          Showcase your creativity through:<br />
+          • Paintings and drawings visualizing smog's impact on daily life<br />
+          • Digital art representing solutions for cleaner air<br />
+          • Conceptual art exploring the emotional toll of smog
+        </p>
+      </div>
+
+      <!-- Research Papers Card -->
+      <div class="card">
+        <h3>Research Papers</h3>
+        <p>
+          Submit well-researched papers on topics like:<br />
+          • Scientific analysis of smog formation and its chemical properties<br />
+          • Innovative technologies for reducing air pollution<br />
+          • Case studies of cities combating smog effectively
+        </p>
+      </div>
+
+      <!-- Videos Card -->
+      <div class="card">
+        <h3>Videos</h3>
+        <p>
+          Create engaging short videos (1-1.5 minutes) that:<br />
+          • Document the impact of smog in your community<br />
+          • Highlight actions individuals can take to reduce smog<br />
+          • Demonstrate a step-by-step DIY project for combating air pollution
+        </p>
+      </div>
+
+      <!-- Presentations Card -->
+      <div class="card">
+        <h3>Presentations</h3>
+        <p>
+          Develop impactful presentations using:<br />
+          • Data visualization to explain smog's effects on health<br />
+          • Proposals for innovative solutions (e.g., designing an air purifier)<br />
+          • Comparisons of smog control strategies in different regions
+        </p>
+      </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="competition">
+      <div class="section-content">
+        <h2>Competition Details</h2>
+
+        <div class="timeline">
+          <div class="timeline-item">
+            <h3>Important Dates</h3>
+            <p>Submission Period: November 25 - December 1, 2024</p>
+          </div>
+
+          <div class="timeline-item">
+            <h3>Submission Categories</h3>
+            <p>
+              • Essays (1000-2000 words)or Blogs and Articles written Online<br />
+              • Artwork (paintings, drawings, digital art)<br />
+              • Research Papers<br />
+              • Videos (1-1.5 minutes)<br />
+              • Presentations
+            </p>
+          </div>
+
+          <div class="timeline-item">
+            <h3>Prizes</h3>
+            <p>
+              • Top 3 Winners: Certificates of Excellence<br />
+              • All Participants: Certificates of Participation
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="register">
+      <div class="section-content">
+        <h2>Join the Movement</h2>
+        <p>
+          Your voice matters in the fight against smog. Register now to share
+          your ideas and be part of the solution.
+        </p>
+        <div style="text-align: center">
+          <a
+            href="https://forms.gle/tVG96ziGmsnRWw8s7"
+            target="_blank"
+            class="register-btn"
+            >Register Now</a
+          >
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <p>Powered by DSMP (GC University)</p>
+      <p>Organized by Muhammad Asad Amir</p>
+      <div class="social-links">
+        <a href="https://github.com/asad-777"
+          ><i class="fa-brands fa-github"></i
+        ></a>
+        <a href="https://www.linkedin.com/in/muhammad-asad-amir-a27541320/"
+          ><i class="fa-brands fa-linkedin"></i
+        ></a>
+      </div>
+    </footer>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const sections = document.querySelectorAll(".section");
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("show");
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          {
+            threshold: 0.1,
+          }
+        );
+
+        sections.forEach((section) => observer.observe(section));
+      });
+    </script>
   </body>
 </html>
