@@ -11,6 +11,28 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
       rel="stylesheet"
     />
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        const contents = document.querySelectorAll(".content");
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                entry.target.classList.add("show");
+                // Optionally, unobserve the element to improve performance
+                observer.unobserve(entry.target);
+              }
+            });
+          },
+          {
+            threshold: 0.1, // Trigger when 10% of the element is visible
+          }
+        );
+
+        contents.forEach((content) => observer.observe(content));
+      });
+    </script>
   </head>
   <body>
     <!-- Navigation Bar -->
@@ -34,7 +56,7 @@
         >Register Here</a
       >
     </div>
-    <div class="information_blank">
+    <div class="information_blank content">
       <div class="asad">
         <h2>What is Smog?</h2>
         <br />
@@ -53,7 +75,7 @@
     </div>
 
     <!-- Event Introduction Section -->
-    <div class="information section_1">
+    <div class="information section_1 content">
       <h2>The DSMP Smog Awareness Competition</h2>
       <br />
       <p>
@@ -76,7 +98,7 @@
     </div>
 
     <!-- What You Can Submit Section -->
-    <div class="information_blank section_1a">
+    <div class="information_blank content section_1a">
       <div class="asad">
         <h2>What You Can Submit</h2>
         <br />
@@ -99,7 +121,8 @@
           <li>
             <strong>Infographics and Visuals</strong>: Use graphics and visual
             storytelling to communicate the dangers of smog. People remember
-            what they see, so make it impactful!
+            what they see, so make it impactful!. It's up to you to submit an
+            Art Work, A presentation or your research work thesis.
           </li>
           <li>
             <strong>Videos</strong>: Create a short video explaining the effects
@@ -108,16 +131,17 @@
           </li>
         </ul>
         <p>
-          No matter the medium, your submission will help raise awareness about
-          the severity of the smog issue. "The world needs innovators who are
-          not afraid to act and make a difference."
+          Details about submissions will be provided in Whatsapp group, your
+          submission will help raise awareness about the severity of the smog
+          issue. "The world needs innovators who are not afraid to act and make
+          a difference."
         </p>
       </div>
       <img src="assets/gcu_logo.png" />
     </div>
 
     <!-- How to Participate Section -->
-    <div class="information section_2">
+    <div class="information section_2 content">
       <h2>How to Participate</h2>
       <br />
       <p>
@@ -129,14 +153,15 @@
       </p>
       <ul>
         <li>
-          Create a blog post, project, infographic, or even a short video that
-          educates and raises awareness about smog and its impact. Get creative
-          with your approach!
+          Create a blog post, project, infographic, a topic related piece of Art
+          work, or even a short video that educates and raises awareness about
+          smog and its impact. Get creative with your approach!
         </li>
         <li>
           Submit your project to us via the registration form below. Tell us
           your story, your research, and how your work can help the community
-          understand the harmful effects of smog.
+          understand the harmful effects of smog.The DeadLine for Submission is
+          1st December, we will start receiving submissions after 25 November.
         </li>
         <li>
           Exciting rewards await! The top 3 submissions will be honored with
@@ -152,7 +177,7 @@
     </div>
 
     <!-- Smog Information Section (Blank sections) -->
-    <div class="information_blank">
+    <div class="information_blank content">
       <div class="asad">
         <h2>Preventing Smog: What You Can Do</h2>
         <br />
@@ -170,7 +195,7 @@
     </div>
 
     <!-- Registration Section -->
-    <div class="information section_3">
+    <div class="information section_3 content">
       <h2>Register for the Competition</h2>
       <br />
       <p>
