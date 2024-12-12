@@ -97,7 +97,7 @@
       }
 
       .section-content {
-        max-width: 1000px;
+        max-width: 80%;
         margin: 0 auto;
       }
 
@@ -204,10 +204,37 @@
       .social-links a:hover {
         color: #c3a96f;
       }
+      .results-table {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        margin: 0 auto;
+        border-collapse: collapse;
+      }
+      .results-table th, .results-table td {
+        border: 1px solid #1b1a54;
+        padding: 12px;
+        text-align: left;
+      }
+      .results-table th {
+        background-color: #1b1a54;
+        color: white;
+      }
+      .results-table tr:nth-child(even) {
+        background-color: #f2f2f2;
+      }
+      .results-table .position {
+        font-weight: bold;
+        text-align: center;
+      }
 
       @media (max-width: 768px) {
         .hero h1 {
           font-size: 2rem;
+        }
+        .results-table {
+        width: 100%;
+        max-width: 800px;
         }
 
         .section {
@@ -418,21 +445,45 @@
 
     <section class="section" id="register">
       <div class="section-content">
-        <h2>Join the Movement</h2>
-        <p>
-          Your voice matters in the fight against smog. Register now to share
-          your ideas and be part of the solution.
-        </p>
-        <div style="text-align: center">
-          <a
-            href="https://forms.gle/tVG96ziGmsnRWw8s7"
-            target="_blank"
-            class="register-btn"
-            >Register Now</a
-          >
+        <h2>Competition Results</h2>
+        <div class="results-table">
+          <table>
+            <thead>
+              <tr>
+                <th>Position</th>
+                <th>Name</th>
+                <th>Major</th>
+                <th>Project</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="position">1st Place</td>
+                <td>Haider Mustafa </td>
+                <td>Pre-Engineering</td>
+                <td><a href="https://docs.google.com/document/d/1FR8eYJoJZohni12ZWs5CMfksboPnX828/edit?usp=drive_link&ouid=107043567037862652935&rtpof=true&sd=true">Click Here</a></td>
+              </tr>
+              <tr>
+                <td class="position">2nd Place</td>
+                <td>Syed Tauseef Ahmad Hassnain</td>
+                <td>Computer Science</td>
+                <td><a href="https://drive.google.com/file/d/1Epr7tHwLp8181vLYETPtjsBptvmmPHEg/view?usp=sharing">Click Here</a></td>
+              </tr>
+              <tr>
+                <td class="position">3rd Place</td>
+                <td>Ali Arif</td>
+                <td>Pre-Engineering</td>
+                <td><a href="https://drive.google.com/file/d/1G2-J-BvfH7LCywgWih5NI5Bl6pKqFxlE/view?usp=sharing">Click Here</a></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div style="text-align: center; margin-top: 2rem;">
+          <p><strong>"</strong>All participants will receive their participation certificates via email. Please check your inbox for the certificate. If you have not received it, kindly contact the DSMP Advisor at their office for assistance.<strong>"</strong></p>
         </div>
       </div>
     </section>
+
 
     <footer>
       <p><strong>Powered by</strong> DSMP (GC University)</p>
